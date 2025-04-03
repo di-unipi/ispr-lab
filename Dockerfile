@@ -1,21 +1,34 @@
-# Use the official Jupyter base image
-FROM quay.io/jupyter/base-notebook:latest
+# Use the official Ubuntu LTS 24.04 as a base image
+FROM ubuntu:24.04
 
-# Set the working directory
-WORKDIR /home/jovyan/work
+# Set environment variables to prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Copy requirements
-COPY requirements.txt /home/jovyan/work/
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Set the working directory to /app
+WORKDIR /app
 
-# Copy the notebooks and static assets into the container
-COPY notebooks /home/jovyan/work/notebooks
-COPY _static /home/jovyan/work/_static
+# Copy the requirements.txt file
+COPY requirements.txt ./
 
-# Expose the port that Jupyter Notebook will run on
+# Install Python dependencies
+RUN pip3 install -r requirements.txt --break-system-packages
+
+# Mount the notebooks folder to /app/notebooks
+# This ensures that edits in the notebooks folder are stored in the original folder
+VOLUME /app/notebooks
+
+# Mount the _static folder to /app/_static
+# This provides access to images and various assets
+VOLUME /app/_static
+
+# Expose the default Jupyter Notebook port
 EXPOSE 8888
 
-# Start Jupyter Notebook server
-CMD ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+# Command to run Jupyter Notebook
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''", "--NotebookApp.password=''"]

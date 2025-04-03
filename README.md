@@ -18,14 +18,14 @@ Using Docker or Podman, you can run the notebooks in a containerized environment
 git clone https://github.com/di-unipi/intro-tf-keras
 cd intro-tf-keras
 docker build -t intro-tf-keras .
-docker run -p 8888:8888 intro-tf-keras
+docker run -p 8888:8888 -v $(pwd)/notebooks:/app/notebooks:z -v $(pwd)/_static:/app/_static:z intro-tf-keras
 ```
 
 ```bash
 git clone https://github.com/di-unipi/intro-tf-keras
 cd intro-tf-keras
 podman build --format=docker -t intro-tf-keras .
-podman run -p 8888:8888 intro-tf-keras
+podman run -p 8888:8888 -v $(pwd)/notebooks:/app/notebooks:z -v $(pwd)/_static:/app/_static:z intro-tf-keras
 ```
 
 ### Google Colab
