@@ -19,12 +19,9 @@ COPY requirements.txt ./
 # Install Python dependencies
 RUN pip3 install -r requirements.txt --break-system-packages
 
-# Mount the notebooks folder to /app/notebooks
-# This ensures that edits in the notebooks folder are stored in the original folder
+# Mount the notebooks, solutions, and _static directories
 VOLUME /app/notebooks
-
-# Mount the _static folder to /app/_static
-# This provides access to images and various assets
+VOLUME /app/solutions
 VOLUME /app/_static
 
 # Expose the default Jupyter Notebook port
