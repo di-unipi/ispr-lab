@@ -1,14 +1,14 @@
-# Introduction to TensorFlow and Keras
+# Introduction to TensorFlow, Keras, and PyTorch
 
-Introduction to TensorFlow and Keras for the course on Intelligent Systems and Pattern Recognition (2025), M.Sc. in Computer Science, University of Pisa.
+Introduction to TensorFlow, Keras, and PyTorch for the course on Intelligent Systems and Pattern Recognition (2025), M.Sc. in Computer Science, University of Pisa.
 
 ## Usage
 
 The Jupyter notebooks in this repository introduce the fundamental concepts of tensor manipulation and neural networks using TensorFlow and Keras. To run the notebooks you have three options:
 
-1. Docker/Podman (the good)
-2. Google Colab (the bad)
-3. Local machine (the ugly)
+1. Docker/Podman (the *good*)
+2. Google Colab (the *bad*)
+3. Local machine (the *ugly*)
 
 ### Docker/Podman
 
@@ -52,4 +52,4 @@ Ensure that you're selecting the correct Python kernel in your Jupyter Notebook 
 ## Contributors
 
 - [Riccardo Massidda](https://pages.di.unipi.it/massidda/) (2025 — …)
-- [Valerio de Caro](https://vdecaro.github.io/) (2023 — …)
+- [Valerio De Caro](https://vdecaro.github.io/) (2023 — …)
