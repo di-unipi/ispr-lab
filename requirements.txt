@@ -9,3 +9,5 @@ pillow
 jupyterlab
 torch
 torchvision
+seaborn
+matplotlib
