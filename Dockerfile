@@ -21,7 +21,6 @@ RUN pip3 install -r requirements.txt --break-system-packages
 
 # Mount the notebooks, solutions, and _static directories
 VOLUME /app/notebooks
-VOLUME /app/solutions
 VOLUME /app/_static
 
 # Expose the default Jupyter Notebook port
